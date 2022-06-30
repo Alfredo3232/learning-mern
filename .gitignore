@@ -1,5 +1,4 @@
 **/node_modules
-FRONTEND/node_modules/.package-lock.json
 FRONTEND/node_modules/.bin/acorn
 FRONTEND/node_modules/.bin/ansi-html
 FRONTEND/node_modules/.bin/atob
@@ -8861,9 +8860,4 @@ FRONTEND/node_modules/core-js-compat/node_modules/semver/ranges/min-version.js
 FRONTEND/node_modules/core-js-compat/node_modules/semver/ranges/outside.js
 FRONTEND/node_modules/core-js-compat/node_modules/semver/ranges/to-comparators.js
 FRONTEND/node_modules/core-js-compat/node_modules/semver/ranges/valid.js
-BACKEND/node_modules/.package-lock.json
 FRONTEND/.eslintrc.js
-BACKEND/node_modules/.package-lock.json
-BACKEND/node_modules/.package-lock.json
-BACKEND/node_modules/.package-lock.json
-BACKEND/node_modules/.package-lock.json

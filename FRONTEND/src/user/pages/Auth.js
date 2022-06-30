@@ -74,16 +74,14 @@ const Auth = () => {
             'Content-Type': 'application/json'
           }
         );
-
-
         auth.login();
       } catch (err) {
-
-        setError(err.message || 'Something went wrong, please try again.');
+        console.log("isLoginMode error ->", err);
       }
+
     } else {
       try {
-        const response = await fetch('http://localhost:5000/api/users/signup', {
+        await sendRequest('http://localhost:5000/api/users/signup', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'

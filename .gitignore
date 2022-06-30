@@ -1,0 +1,10 @@
+BACKEND/node_modules/.bin/atob
+BACKEND/node_modules/.bin/is-ci
+BACKEND/node_modules/.bin/mime
+BACKEND/node_modules/.bin/nodemon
+BACKEND/node_modules/.bin/nodetouch
+BACKEND/node_modules/.bin/nopt
+BACKEND/node_modules/.bin/rc
+BACKEND/node_modules/.bin/semver
+BACKEND/node_modules/.bin/uuid
+BACKEND/node_modules/.bin/which

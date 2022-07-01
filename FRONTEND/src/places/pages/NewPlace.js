@@ -1,15 +1,22 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import Input from '../../shared/components/FormElements/Input';
 import Button from '../../shared/components/FormElements/Button';
+import ErrorModal from '../../shared/components/UIElements/ErrorModal';
 import {
   VALIDATOR_REQUIRE,
   VALIDATOR_MINLENGTH
 } from '../../shared/util/validators';
 import { useForm } from '../../shared/hooks/form-hook';
+import { useHttpClient } from '../../shared/hooks/http-hook';
+import { AuthContext } from '../../shared/context/auth-context';
 import './PlaceForm.css';
 
+
 const NewPlace = () => {
+  const auth = useContext(AuthContext)
+  // eslint-disable-next-line
+  const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const [formState, inputHandler] = useForm(
     {
       title: {
@@ -28,9 +35,19 @@ const NewPlace = () => {
     false
   );
 
-  const placeSubmitHandler = event => {
+  const placeSubmitHandler = async event => {
     event.preventDefault();
-    console.log(formState.inputs); // send this to the backend!
+    try {
+    await sendRequest('http://localhost:5000/api/places', 'POST', JSON.stringify({
+      title: formState.inputs.title.value,
+      description: formState.inputs.description.value,
+      address: formState.inputs.address.value,
+      creator: auth.userId
+    }));
+    } catch (err){
+      console.log(err)
+    }
+
   };
 
   return (

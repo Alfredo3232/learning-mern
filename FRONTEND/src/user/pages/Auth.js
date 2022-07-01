@@ -81,27 +81,22 @@ const Auth = () => {
 
     } else {
       try {
-        await sendRequest('http://localhost:5000/api/users/signup', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
+        await sendRequest(
+          'http://localhost:5000/api/users/signup',
+          'POST',
+          JSON.stringify({
             name: formState.inputs.name.value,
             email: formState.inputs.email.value,
             password: formState.inputs.password.value
-          })
-        });
-
-        const responseData = await response.json();
-        if (!response.ok) {
-          throw new Error(responseData.message);
-        }
+          }),
+          {
+            'Content-Type': 'application/json'
+          },
+        );
 
         auth.login();
       } catch (err) {
-
-        setError(err.message || 'Something went wrong, please try again.');
+        console.log(err)
       }
     }
   };

@@ -15,9 +15,8 @@ const UserPlaces = () => {
   useEffect(() => {
     const fetchPlaces = async () => {
       try {
-        // eslint-disable-nnext-line
         const responseData = await sendRequest(`http://localhost:5000/api/places/user/${userId}`);
-        setLoadedPlaces();
+        setLoadedPlaces(responseData.places);
       } catch (err) {
         console.log(err)
       }
@@ -25,7 +24,11 @@ const UserPlaces = () => {
     fetchPlaces();
   }, [sendRequest, userId])
 
-
+  const placeDeletedHandler = (deletedPlaceId) => {
+    setLoadedPlaces(
+      prevPlaces => prevPlaces.filter(place => place.id !== deletedPlaceId)
+    );
+  };
 
   return (
     <React.Fragment>
@@ -36,7 +39,7 @@ const UserPlaces = () => {
         </div>
       )
       }
-      {!isLoading && loadedPlaces && <PlaceList items={loadedPlaces} />}
+      {!isLoading && loadedPlaces && <PlaceList items={loadedPlaces} onDeletePlace={} />}
     </React.Fragment>
   )
 };

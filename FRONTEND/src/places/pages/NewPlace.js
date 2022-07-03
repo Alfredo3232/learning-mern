@@ -5,6 +5,7 @@ import Input from '../../shared/components/FormElements/Input';
 import Button from '../../shared/components/FormElements/Button';
 import ErrorModal from '../../shared/components/UIElements/ErrorModal';
 import LoadingSpinner from '../../shared/components/UIElements/LoadingSpinner';
+import ImageUpload from '../../shared/components/FormElements/ImageUpload';
 import {
   VALIDATOR_REQUIRE,
   VALIDATOR_MINLENGTH
@@ -87,6 +88,7 @@ const NewPlace = () => {
           errorText="Please enter a valid address."
           onInput={inputHandler}
         />
+        <ImageUpload id="image" onInput={inputHandler} errorText="Please provide an image." />
         <Button type="submit" disabled={!formState.isValid}>
           ADD PLACE
         </Button>

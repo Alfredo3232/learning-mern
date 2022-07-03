@@ -83,10 +83,7 @@ const Auth = () => {
           }
         );
         auth.login(responseData.user.id);
-      } catch (err) {
-        console.log("isLoginMode error ->", err);
-      }
-
+      } catch (err) {}
     } else {
       try {
         const responseData = await sendRequest(
@@ -99,13 +96,11 @@ const Auth = () => {
           }),
           {
             'Content-Type': 'application/json'
-          },
+          }
         );
 
         auth.login(responseData.user.id);
-      } catch (err) {
-        console.log(err)
-      }
+      } catch (err) {}
     }
   };
 
@@ -128,7 +123,9 @@ const Auth = () => {
               onInput={inputHandler}
             />
           )}
-          {!isLoginMode && <ImageUpload center id="image" onInput={inputHandler} />}
+          {!isLoginMode && (
+            <ImageUpload center id="image" onInput={inputHandler} />
+          )}
           <Input
             element="input"
             id="email"

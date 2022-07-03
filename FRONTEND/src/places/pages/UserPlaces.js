@@ -15,18 +15,18 @@ const UserPlaces = () => {
   useEffect(() => {
     const fetchPlaces = async () => {
       try {
-        const responseData = await sendRequest(`http://localhost:5000/api/places/user/${userId}`);
+        const responseData = await sendRequest(
+          `http://localhost:5000/api/places/user/${userId}`
+        );
         setLoadedPlaces(responseData.places);
-      } catch (err) {
-        console.log(err)
-      }
-    }
+      } catch (err) {}
+    };
     fetchPlaces();
-  }, [sendRequest, userId])
+  }, [sendRequest, userId]);
 
-  const placeDeletedHandler = (deletedPlaceId) => {
-    setLoadedPlaces(
-      prevPlaces => prevPlaces.filter(place => place.id !== deletedPlaceId)
+  const placeDeletedHandler = deletedPlaceId => {
+    setLoadedPlaces(prevPlaces =>
+      prevPlaces.filter(place => place.id !== deletedPlaceId)
     );
   };
 
@@ -34,14 +34,15 @@ const UserPlaces = () => {
     <React.Fragment>
       <ErrorModal error={error} onClear={clearError} />
       {isLoading && (
-        <div className='center'>
+        <div className="center">
           <LoadingSpinner />
         </div>
-      )
-      }
-      {!isLoading && loadedPlaces && <PlaceList items={loadedPlaces} onDeletePlace={} />}
+      )}
+      {!isLoading && loadedPlaces && (
+        <PlaceList items={loadedPlaces} onDeletePlace={placeDeletedHandler} />
+      )}
     </React.Fragment>
-  )
+  );
 };
 
 export default UserPlaces;

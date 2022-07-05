@@ -8862,3 +8862,4 @@ FRONTEND/node_modules/core-js-compat/node_modules/semver/ranges/to-comparators.j
 FRONTEND/node_modules/core-js-compat/node_modules/semver/ranges/valid.js
 FRONTEND/.eslintrc.js
 BACKEND/.eslintrc.js
+BACKEND/nodemon.json
